@@ -1,34 +1,32 @@
 "use client";
 
 import i18n from "i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
 import en from "./locales/en.json";
 import ru from "./locales/ru.json";
 
 if (!i18n.isInitialized) {
-  i18n
-    .use(LanguageDetector)
-    .use(initReactI18next)
-    .init({
-      resources: {
-        en: { translation: en },
-        ru: { translation: ru }
-      },
-      fallbackLng: "en",
-      supportedLngs: ["en", "ru"],
-      detection: {
-        order: ["localStorage", "navigator"],
-        caches: ["localStorage"],
-        lookupLocalStorage: "stuci-language"
-      },
-      interpolation: {
-        escapeValue: false
-      },
-      react: {
-        useSuspense: false
-      }
-    });
+  // Read saved language from localStorage synchronously if available
+  const savedLang =
+    typeof window !== "undefined"
+      ? (localStorage.getItem("stuci-language") ?? "en")
+      : "en";
+
+  i18n.use(initReactI18next).init({
+    resources: {
+      en: { translation: en },
+      ru: { translation: ru }
+    },
+    lng: savedLang,
+    fallbackLng: "en",
+    supportedLngs: ["en", "ru"],
+    interpolation: {
+      escapeValue: false
+    },
+    react: {
+      useSuspense: false
+    }
+  });
 }
 
 export default i18n;

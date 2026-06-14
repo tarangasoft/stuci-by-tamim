@@ -8,8 +8,12 @@ export function LanguageToggle() {
   const isRu = i18n.language === "ru";
 
   const toggleLanguage = () => {
-    void i18n.changeLanguage(isRu ? "en" : "ru");
-    document.documentElement.lang = isRu ? "en" : "ru";
+    const nextLang = isRu ? "en" : "ru";
+    void i18n.changeLanguage(nextLang);
+    document.documentElement.lang = nextLang;
+    try {
+      localStorage.setItem("stuci-language", nextLang);
+    } catch {}
   };
 
   return (

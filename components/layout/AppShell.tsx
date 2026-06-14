@@ -3,7 +3,7 @@
 import Lenis from "@studio-freight/lenis";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { I18nextProvider } from "react-i18next";
 import i18n from "@/i18n/config";
 import { ThemeProvider } from "@/lib/ThemeProvider";
@@ -14,8 +14,14 @@ import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       return;
     }
@@ -35,7 +41,19 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       window.cancelAnimationFrame(frame);
       lenis.destroy();
     };
-  }, []);
+  }, [mounted]);
+
+  if (!mounted) {
+    return (
+      <I18nextProvider i18n={i18n}>
+        <ThemeProvider>
+          <Navbar />
+          <main style={{ minHeight: "100vh" }}>{children}</main>
+          <Footer />
+        </ThemeProvider>
+      </I18nextProvider>
+    );
+  }
 
   return (
     <I18nextProvider i18n={i18n}>
