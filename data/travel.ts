@@ -50,50 +50,142 @@ export const heroDestinations = {
 };
 
 export const imageBank = {
+  // Hero — dramatic tropical ocean with golden sunset
   hero:
-    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2200&q=85",
+    "https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=2400&q=90",
+  // Cox's Bazar — actual long sandy beach Bangladesh
   cox:
-    "https://images.unsplash.com/photo-1588612140410-09323f4f89d3?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?auto=format&fit=crop&w=1400&q=85",
+  // Sundarban — lush mangrove forest waterway
   sundarban:
-    "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1400&q=85",
+  // Kuakata — wide beach at sunrise, calm waves
   kuakata:
-    "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=85",
+  // Rajshahi — ancient temple ruins, heritage site
   rajshahi:
-    "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1400&q=85",
+  // Sonargaon — colonial ruins corridor
   sonargaon:
-    "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=1400&q=85",
+  // Natore — lotus pond with lily pads
   natore:
-    "https://images.unsplash.com/photo-1590050752117-238cb0612b1b?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=1400&q=85",
+  // Sylhet — vivid green tea garden rows
   sylhet:
-    "https://images.unsplash.com/photo-1563886362052-783c14194c78?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1400&q=85",
+  // Banditban — misty mountain hills, layers of green
   bandarban:
-    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1400&q=85",
+  // Bangkok — grand palace and temples
   bangkok:
-    "https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1563492065599-3520f775eeed?auto=format&fit=crop&w=1400&q=85",
+  // Malaysia — KLCC Petronas towers at dusk
   malaysia:
-    "https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=1400&q=85",
+  // India — Taj Mahal golden sunrise
   india:
-    "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1400&q=85",
+  // Nepal — Himalayan mountain range with prayer flags
   nepal:
-    "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1400&q=85",
+  // Dubai — aerial skyline at dusk
   dubai:
-    "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1400&q=85",
+  // Maldives — overwater bungalows turquoise water
   maldives:
-    "https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=1400&q=85",
+  // About page — cinematic travel scene
   about:
-    "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1800&q=80",
+    "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=2000&q=85",
   team:
     "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
   team2:
     "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80",
   team3:
     "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80",
+  // Travelers — friends hiking with backpacks
   travelers:
-    "https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=1400&q=85",
+  // Wildlife — Bengal tiger in jungle
   wildlife:
-    "https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1602491453631-e2a5ad90a131?auto=format&fit=crop&w=1400&q=85",
+  // Culture — traditional colorful festival
   culture:
-    "https://images.unsplash.com/photo-1583417267826-aebc4d1542e1?auto=format&fit=crop&w=1200&q=80"
+    "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1400&q=85",
+  // Additional gallery images
+  bali:
+    "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1400&q=85",
+  santorini:
+    "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1400&q=85",
+  iceland:
+    "https://images.unsplash.com/photo-1531168556467-80aace0d0144?auto=format&fit=crop&w=1400&q=85",
+  patagonia:
+    "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=1400&q=85",
+  kyoto:
+    "https://images.unsplash.com/photo-1492571350019-22de08371fd3?auto=format&fit=crop&w=1400&q=85",
+  srilanka:
+    "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=1400&q=85"
+};
+
+// ── Destination popup gallery images (shown on hover/click in MapSection / carousel)
+export const destinationGalleries: Record<string, string[]> = {
+  cox: [
+    "https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1559494007-9f5847c49d94?auto=format&fit=crop&w=600&q=80"
+  ],
+  sundarban: [
+    "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1425082661705-1834bfd09dca?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1602491453631-e2a5ad90a131?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?auto=format&fit=crop&w=600&q=80"
+  ],
+  kuakata: [
+    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1515238152791-8216bfdf89a7?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=600&q=80"
+  ],
+  rajshahi: [
+    "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1467377791767-c929b5dc9a23?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&q=80"
+  ],
+  international: [
+    "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1563492065599-3520f775eeed?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=600&q=80"
+  ],
+  sylhet: [
+    "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1470770903676-69b98201ea1c?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?auto=format&fit=crop&w=600&q=80"
+  ],
+  bandarban: [
+    "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1536431311719-398b6704d4cc?auto=format&fit=crop&w=600&q=80"
+  ]
 };
 
 export const stats = [
@@ -557,72 +649,135 @@ export const galleryItems = [
   {
     id: "g-cox",
     category: "beaches" as GalleryCategory,
-    title: { en: "Cox's Bazar morning", ru: "Утро в Кокс-Базаре" },
+    title: { en: "Cox's Bazar golden shore", ru: "Золотой берег Кокс-Базара" },
     credit: "Stuci archive",
     image: imageBank.cox
   },
   {
-    id: "g-sundarban",
-    category: "wildlife" as GalleryCategory,
-    title: { en: "Sundarban waterways", ru: "Каналы Сундарбана" },
-    credit: "Forest route team",
-    image: imageBank.sundarban
-  },
-  {
-    id: "g-sylhet",
-    category: "landscapes" as GalleryCategory,
-    title: { en: "Sylhet tea valley", ru: "Чайная долина Силхета" },
-    credit: "Stuci archive",
-    image: imageBank.sylhet
-  },
-  {
-    id: "g-rajshahi",
-    category: "culture" as GalleryCategory,
-    title: { en: "Rajshahi silk mood", ru: "Шелковое настроение Раджшахи" },
-    credit: "Cultural desk",
-    image: imageBank.culture
-  },
-  {
-    id: "g-bandarban",
-    category: "landscapes" as GalleryCategory,
-    title: { en: "Bandarban cloudline", ru: "Облака Бандарбана" },
-    credit: "Hill route team",
-    image: imageBank.bandarban
-  },
-  {
-    id: "g-kuakata",
-    category: "beaches" as GalleryCategory,
-    title: { en: "Kuakata horizon", ru: "Горизонт Куакаты" },
-    credit: "Beach team",
-    image: imageBank.kuakata
-  },
-  {
-    id: "g-wildlife",
-    category: "wildlife" as GalleryCategory,
-    title: { en: "Wild Bengal", ru: "Дикая Бенгалия" },
-    credit: "Wildlife route",
-    image: imageBank.wildlife
-  },
-  {
-    id: "g-travelers",
-    category: "tourists" as GalleryCategory,
-    title: { en: "Travelers at the viewpoint", ru: "Путешественники на смотровой" },
-    credit: "Guest photo",
-    image: imageBank.travelers
-  },
-  {
     id: "g-maldives",
     category: "beaches" as GalleryCategory,
-    title: { en: "Island escape", ru: "Побег на остров" },
+    title: { en: "Maldives overwater paradise", ru: "Рай на воде — Мальдивы" },
     credit: "International desk",
     image: imageBank.maldives
   },
   {
+    id: "g-bali",
+    category: "beaches" as GalleryCategory,
+    title: { en: "Bali terraced beauty", ru: "Рисовые террасы Бали" },
+    credit: "International desk",
+    image: imageBank.bali
+  },
+  {
+    id: "g-kuakata",
+    category: "beaches" as GalleryCategory,
+    title: { en: "Kuakata twin-sea horizon", ru: "Горизонт двух морей Куакаты" },
+    credit: "Beach team",
+    image: imageBank.kuakata
+  },
+  {
+    id: "g-sundarban",
+    category: "wildlife" as GalleryCategory,
+    title: { en: "Sundarban mangrove channels", ru: "Мангровые каналы Сундарбана" },
+    credit: "Forest route team",
+    image: imageBank.sundarban
+  },
+  {
+    id: "g-wildlife",
+    category: "wildlife" as GalleryCategory,
+    title: { en: "Wild Bengal tiger", ru: "Тигр дикой Бенгалии" },
+    credit: "Wildlife route",
+    image: imageBank.wildlife
+  },
+  {
     id: "g-nepal",
     category: "landscapes" as GalleryCategory,
-    title: { en: "Himalayan peaks", ru: "Гималайские вершины" },
+    title: { en: "Himalayan peaks, Nepal", ru: "Гималайские вершины, Непал" },
     credit: "International desk",
     image: imageBank.nepal
+  },
+  {
+    id: "g-bandarban",
+    category: "landscapes" as GalleryCategory,
+    title: { en: "Bandarban misty cloudline", ru: "Туманные облака Бандарбана" },
+    credit: "Hill route team",
+    image: imageBank.bandarban
+  },
+  {
+    id: "g-sylhet",
+    category: "landscapes" as GalleryCategory,
+    title: { en: "Sylhet emerald tea valley", ru: "Изумрудная чайная долина Силхета" },
+    credit: "Stuci archive",
+    image: imageBank.sylhet
+  },
+  {
+    id: "g-iceland",
+    category: "landscapes" as GalleryCategory,
+    title: { en: "Iceland northern lights", ru: "Северное сияние Исландии" },
+    credit: "International desk",
+    image: imageBank.iceland
+  },
+  {
+    id: "g-patagonia",
+    category: "landscapes" as GalleryCategory,
+    title: { en: "Patagonia wilderness", ru: "Дикая Патагония" },
+    credit: "International desk",
+    image: imageBank.patagonia
+  },
+  {
+    id: "g-culture",
+    category: "culture" as GalleryCategory,
+    title: { en: "Vibrant festival colours", ru: "Яркие краски фестиваля" },
+    credit: "Cultural desk",
+    image: imageBank.culture
+  },
+  {
+    id: "g-rajshahi",
+    category: "culture" as GalleryCategory,
+    title: { en: "Rajshahi heritage temples", ru: "Храмы наследия Раджшахи" },
+    credit: "Cultural desk",
+    image: imageBank.rajshahi
+  },
+  {
+    id: "g-kyoto",
+    category: "culture" as GalleryCategory,
+    title: { en: "Kyoto cherry blossoms", ru: "Сакура в Киото" },
+    credit: "International desk",
+    image: imageBank.kyoto
+  },
+  {
+    id: "g-india",
+    category: "culture" as GalleryCategory,
+    title: { en: "Taj Mahal at sunrise", ru: "Тадж-Махал на рассвете" },
+    credit: "International desk",
+    image: imageBank.india
+  },
+  {
+    id: "g-travelers",
+    category: "tourists" as GalleryCategory,
+    title: { en: "Adventurers on the trail", ru: "Путешественники на тропе" },
+    credit: "Guest photo",
+    image: imageBank.travelers
+  },
+  {
+    id: "g-srilanka",
+    category: "tourists" as GalleryCategory,
+    title: { en: "Sri Lanka tea country", ru: "Чайный край Шри-Ланки" },
+    credit: "International desk",
+    image: imageBank.srilanka
+  },
+  {
+    id: "g-dubai",
+    category: "tourists" as GalleryCategory,
+    title: { en: "Dubai skyline at dusk", ru: "Дубай в сумерках" },
+    credit: "International desk",
+    image: imageBank.dubai
+  },
+  {
+    id: "g-santorini",
+    category: "tourists" as GalleryCategory,
+    title: { en: "Santorini blue domes", ru: "Синие купола Санторини" },
+    credit: "International desk",
+    image: imageBank.santorini
   },
   {
     id: "g-video",

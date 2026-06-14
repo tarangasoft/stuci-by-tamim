@@ -6,18 +6,12 @@ import en from "./locales/en.json";
 import ru from "./locales/ru.json";
 
 if (!i18n.isInitialized) {
-  // Read saved language from localStorage synchronously if available
-  const savedLang =
-    typeof window !== "undefined"
-      ? (localStorage.getItem("stuci-language") ?? "en")
-      : "en";
-
   i18n.use(initReactI18next).init({
     resources: {
       en: { translation: en },
       ru: { translation: ru }
     },
-    lng: savedLang,
+    lng: "en",
     fallbackLng: "en",
     supportedLngs: ["en", "ru"],
     interpolation: {

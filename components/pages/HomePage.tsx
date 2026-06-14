@@ -25,6 +25,7 @@ import { ParticleField } from "@/components/ui/ParticleField";
 import {
   copy,
   destinations,
+  destinationGalleries,
   features,
   heroDestinations,
   imageBank,
@@ -33,11 +34,6 @@ import {
   storyPanels,
   testimonials
 } from "@/data/travel";
-
-const HeroGlobe = dynamic(() => import("@/components/three/HeroGlobe").then((mod) => mod.HeroGlobe), {
-  ssr: false,
-  loading: () => <div className="hero-globe hero-globe--fallback" aria-hidden="true" />
-});
 
 export function HomePage() {
   const { t, i18n } = useTranslation();
@@ -87,8 +83,6 @@ export function HomePage() {
             </Link>
           </div>
         </div>
-
-        <HeroGlobe />
 
         <a className="scroll-indicator magnetic" href="#stats">
           <span />
@@ -169,9 +163,54 @@ function FeatureSection({ locale }: { locale: string }) {
   );
 }
 
+function DestinationGalleryPopup({
+  destinationId,
+  destinationName,
+  onClose
+}: {
+  destinationId: string;
+  destinationName: string;
+  onClose: () => void;
+}) {
+  const images = destinationGalleries[destinationId] ?? [];
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  return (
+    <div className="dest-popup-backdrop" onClick={onClose} role="dialog" aria-modal="true" aria-label={`${destinationName} gallery`}>
+      <div className="dest-popup" onClick={(e) => e.stopPropagation()}>
+        <div className="dest-popup__header">
+          <h2>{destinationName}</h2>
+          <button type="button" className="dest-popup__close" onClick={onClose} aria-label="Close gallery">
+            ✕
+          </button>
+        </div>
+        <div className="dest-popup__grid">
+          {images.map((src, i) => (
+            <div key={i} className="dest-popup__img-wrap">
+              <img src={src} alt={`${destinationName} scene ${i + 1}`} loading="lazy" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function DestinationCarousel({ locale }: { locale: string }) {
   const { t } = useTranslation();
   const [active, setActive] = useState(1);
+  const [popupId, setPopupId] = useState<string | null>(null);
+
+  const popupDest = popupId ? destinations.find(d => d.id === popupId) : null;
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -186,57 +225,76 @@ function DestinationCarousel({ locale }: { locale: string }) {
   };
 
   return (
-    <section className="section carousel-section">
-      <div className="section-inner carousel-heading">
-        <div>
-          <p className="section-kicker">{t("sections.featured")}</p>
-          <h2 className="section-title">{copy({ en: "Your next adventure, in motion.", ru: "Следующее приключение уже движется." }, locale)}</h2>
+    <>
+      {popupId && popupDest && (
+        <DestinationGalleryPopup
+          destinationId={popupId}
+          destinationName={copy(popupDest.name, locale)}
+          onClose={() => setPopupId(null)}
+        />
+      )}
+      <section className="section carousel-section">
+        <div className="section-inner carousel-heading">
+          <div>
+            <p className="section-kicker">{t("sections.featured")}</p>
+            <h2 className="section-title">{copy({ en: "Your next adventure, in motion.", ru: "Следующее приключение уже движется." }, locale)}</h2>
+          </div>
+          <div className="carousel-controls">
+            <button type="button" onClick={() => move(-1)} aria-label="Previous destination">
+              <ArrowLeft size={20} aria-hidden="true" />
+            </button>
+            <button type="button" onClick={() => move(1)} aria-label="Next destination">
+              <ArrowRight size={20} aria-hidden="true" />
+            </button>
+          </div>
         </div>
-        <div className="carousel-controls">
-          <button type="button" onClick={() => move(-1)} aria-label="Previous destination">
-            <ArrowLeft size={20} aria-hidden="true" />
-          </button>
-          <button type="button" onClick={() => move(1)} aria-label="Next destination">
-            <ArrowRight size={20} aria-hidden="true" />
-          </button>
-        </div>
-      </div>
 
-      <div className="destination-stage" aria-live="polite">
-        {destinations.map((destination, index) => {
-          const offset = index - active;
-          const normalized = offset > 2 ? offset - destinations.length : offset < -2 ? offset + destinations.length : offset;
-          const isActive = index === active;
-          return (
-            <article
-              className="destination-card magnetic"
-              data-active={isActive}
-              data-cursor="image"
-              key={destination.id}
-              style={{
-                transform: `translateX(calc(${normalized} * 52%)) translateZ(${isActive ? 70 : -30 * Math.abs(normalized)}px) rotateY(${normalized * -12}deg) scale(${isActive ? 1.04 : Math.max(0.78, 1 - Math.abs(normalized) * 0.12)})`,
-                zIndex: 10 - Math.abs(normalized),
-                opacity: Math.abs(normalized) > 2 ? 0 : 1
-              }}
-            >
-              <Image src={destination.image} alt={copy(destination.name, locale)} fill sizes="(max-width: 760px) 82vw, 360px" />
-              <div className="destination-card__body">
-                <span>{copy(destination.duration, locale)}</span>
-                <h3>{copy(destination.name, locale)}</h3>
-                <p>{copy(destination.teaser, locale)}</p>
-                <strong>
-                  {t("tours.from")} {destination.price}
-                </strong>
-                <Link href="/tours">
-                  {copy({ en: "Explore", ru: "Смотреть" }, locale)}
-                  <ArrowRight size={16} aria-hidden="true" />
-                </Link>
-              </div>
-            </article>
-          );
-        })}
-      </div>
-    </section>
+        <div className="destination-stage" aria-live="polite">
+          {destinations.map((destination, index) => {
+            const offset = index - active;
+            const normalized = offset > 2 ? offset - destinations.length : offset < -2 ? offset + destinations.length : offset;
+            const isActive = index === active;
+            return (
+              <article
+                className="destination-card magnetic"
+                data-active={isActive}
+                data-cursor="image"
+                key={destination.id}
+                style={{
+                  transform: `translateX(calc(${normalized} * 52%)) translateZ(${isActive ? 70 : -30 * Math.abs(normalized)}px) rotateY(${normalized * -12}deg) scale(${isActive ? 1.04 : Math.max(0.78, 1 - Math.abs(normalized) * 0.12)})`,
+                  zIndex: 10 - Math.abs(normalized),
+                  opacity: Math.abs(normalized) > 2 ? 0 : 1
+                }}
+              >
+                <Image src={destination.image} alt={copy(destination.name, locale)} fill sizes="(max-width: 760px) 82vw, 360px" />
+                <div className="destination-card__body">
+                  <span>{copy(destination.duration, locale)}</span>
+                  <h3>{copy(destination.name, locale)}</h3>
+                  <p>{copy(destination.teaser, locale)}</p>
+                  <strong>
+                    {t("tours.from")} {destination.price}
+                  </strong>
+                  <div className="destination-card__actions">
+                    <button
+                      type="button"
+                      className="dest-gallery-btn"
+                      onClick={() => setPopupId(destination.id)}
+                      aria-label={`View ${copy(destination.name, locale)} photo gallery`}
+                    >
+                      🖼 {copy({ en: "View Gallery", ru: "Галерея" }, locale)}
+                    </button>
+                    <Link href="/tours">
+                      {copy({ en: "Explore", ru: "Смотреть" }, locale)}
+                      <ArrowRight size={16} aria-hidden="true" />
+                    </Link>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+    </>
   );
 }
 
