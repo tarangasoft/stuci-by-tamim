@@ -41,7 +41,7 @@ export const navItems = [
   { href: "/about", key: "nav.about" },
   { href: "/tours", key: "nav.tours" },
   { href: "/gallery", key: "nav.gallery" },
-  { href: "#contact", key: "nav.contact" }
+  { href: "/contact", key: "nav.contact" }
 ];
 
 export const heroDestinations = {
@@ -53,37 +53,47 @@ export const imageBank = {
   hero:
     "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2200&q=85",
   cox:
-    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1588612140410-09323f4f89d3?auto=format&fit=crop&w=1200&q=80",
   sundarban:
-    "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=1200&q=80",
   kuakata:
-    "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?auto=format&fit=crop&w=1200&q=80",
   rajshahi:
-    "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=80",
   sonargaon:
-    "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=1200&q=80",
   natore:
-    "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1590050752117-238cb0612b1b?auto=format&fit=crop&w=1200&q=80",
   sylhet:
-    "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1563886362052-783c14194c78?auto=format&fit=crop&w=1200&q=80",
   bandarban:
-    "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
   bangkok:
-    "https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=1200&q=80",
   malaysia:
-    "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=1200&q=80",
+  india:
+    "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1200&q=80",
   nepal:
     "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80",
   dubai:
     "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80",
   maldives:
-    "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&w=1200&q=80",
   about:
-    "https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?auto=format&fit=crop&w=1800&q=80",
+    "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1800&q=80",
   team:
-    "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
+  team2:
+    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80",
+  team3:
+    "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80",
   travelers:
-    "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=80"
+    "https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=1200&q=80",
+  wildlife:
+    "https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?auto=format&fit=crop&w=1200&q=80",
+  culture:
+    "https://images.unsplash.com/photo-1583417267826-aebc4d1542e1?auto=format&fit=crop&w=1200&q=80"
 };
 
 export const stats = [
@@ -570,7 +580,7 @@ export const galleryItems = [
     category: "culture" as GalleryCategory,
     title: { en: "Rajshahi silk mood", ru: "Шелковое настроение Раджшахи" },
     credit: "Cultural desk",
-    image: imageBank.rajshahi
+    image: imageBank.culture
   },
   {
     id: "g-bandarban",
@@ -587,11 +597,32 @@ export const galleryItems = [
     image: imageBank.kuakata
   },
   {
+    id: "g-wildlife",
+    category: "wildlife" as GalleryCategory,
+    title: { en: "Wild Bengal", ru: "Дикая Бенгалия" },
+    credit: "Wildlife route",
+    image: imageBank.wildlife
+  },
+  {
     id: "g-travelers",
     category: "tourists" as GalleryCategory,
     title: { en: "Travelers at the viewpoint", ru: "Путешественники на смотровой" },
     credit: "Guest photo",
     image: imageBank.travelers
+  },
+  {
+    id: "g-maldives",
+    category: "beaches" as GalleryCategory,
+    title: { en: "Island escape", ru: "Побег на остров" },
+    credit: "International desk",
+    image: imageBank.maldives
+  },
+  {
+    id: "g-nepal",
+    category: "landscapes" as GalleryCategory,
+    title: { en: "Himalayan peaks", ru: "Гималайские вершины" },
+    credit: "International desk",
+    image: imageBank.nepal
   },
   {
     id: "g-video",
@@ -669,12 +700,12 @@ export const team = [
   {
     name: "Nadia Karim",
     role: { en: "Guest Experience Lead", ru: "Руководитель гостевого опыта" },
-    image: imageBank.travelers
+    image: imageBank.team2
   },
   {
     name: "Sergey Ivanov",
     role: { en: "Russian Travel Desk", ru: "Русскоязычная поддержка" },
-    image: imageBank.about
+    image: imageBank.team3
   }
 ];
 

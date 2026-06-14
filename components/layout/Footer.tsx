@@ -1,23 +1,39 @@
 "use client";
 
-import { ArrowUp, Facebook, Instagram, Mail, MapPin, Phone, Send } from "lucide-react";
+import confetti from "canvas-confetti";
+import { ArrowUp, CheckCircle, Clock, Facebook, Instagram, Mail, MapPin, Phone, Send } from "lucide-react";
 import Link from "next/link";
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { navItems } from "@/data/travel";
 
 export function Footer() {
   const { t } = useTranslation();
   const [subscribed, setSubscribed] = useState(false);
+  const btnRef = useRef<HTMLButtonElement>(null);
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSubscribed(true);
+
+    if (btnRef.current) {
+      const rect = btnRef.current.getBoundingClientRect();
+      const x = (rect.left + rect.width / 2) / window.innerWidth;
+      const y = (rect.top + rect.height / 2) / window.innerHeight;
+
+      confetti({
+        particleCount: 90,
+        spread: 70,
+        origin: { x, y },
+        colors: ["#0A9B8E", "#F0A500", "#FFD166", "#ff6b5e", "#ffffff"]
+      });
+    }
   };
 
   return (
     <footer className="site-footer" id="contact">
       <div className="footer-particles" aria-hidden="true" />
+
       <section className="contact-band section-inner glass-card">
         <div>
           <MapPin aria-hidden="true" />
@@ -34,8 +50,8 @@ export function Footer() {
           </a>
         </div>
         <div>
-          <Mail aria-hidden="true" />
-          <span>{t("footer.email")}</span>
+          <Clock aria-hidden="true" />
+          <span>{t("footer.hours")}</span>
           <a href="mailto:info@stucitravel.com">{t("footer.schedule")}</a>
         </div>
       </section>
@@ -49,9 +65,18 @@ export function Footer() {
             {t("forms.email")}
           </label>
           <input id="newsletter-email" type="email" required placeholder={t("forms.email")} />
-          <button type="submit" className="cinematic-button">
-            {subscribed ? t("forms.subscribed") : t("forms.subscribe")}
-            <Send size={16} aria-hidden="true" />
+          <button ref={btnRef} type="submit" className="cinematic-button">
+            {subscribed ? (
+              <>
+                <CheckCircle size={16} aria-hidden="true" />
+                {t("forms.subscribed")}
+              </>
+            ) : (
+              <>
+                {t("forms.subscribe")}
+                <Send size={16} aria-hidden="true" />
+              </>
+            )}
           </button>
         </form>
       </section>
@@ -69,11 +94,14 @@ export function Footer() {
             <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noreferrer">
               <Instagram size={18} aria-hidden="true" />
             </a>
+            <a href="mailto:info@stucitravel.com" aria-label="Email">
+              <Mail size={18} aria-hidden="true" />
+            </a>
           </div>
         </div>
         <div>
           <h2>{t("footer.quickLinks")}</h2>
-          {navItems.slice(0, 4).map((item) => (
+          {navItems.map((item) => (
             <Link key={item.href} href={item.href}>
               {t(item.key)}
             </Link>

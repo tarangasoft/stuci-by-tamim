@@ -17,6 +17,7 @@ import {
   WalletCards
 } from "lucide-react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -61,7 +62,7 @@ export function HomePage() {
   return (
     <div className="home-page">
       <section className="home-hero">
-        <img className="hero-image" src={imageBank.hero} alt="Golden beach waves at sunset" />
+        <Image className="hero-image" src={imageBank.hero} alt="Golden beach waves at sunset" fill priority sizes="100vw" />
         <div className="hero-overlay" />
         <ParticleField density={90} />
         <div className="noise" />
@@ -81,9 +82,9 @@ export function HomePage() {
               {t("hero.ctaExplore")}
               <ChevronRight size={18} aria-hidden="true" />
             </Link>
-            <a href="#contact" className="ghost-button magnetic">
+            <Link href="/contact" className="ghost-button magnetic">
               {t("hero.ctaBook")}
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -218,7 +219,7 @@ function DestinationCarousel({ locale }: { locale: string }) {
                 opacity: Math.abs(normalized) > 2 ? 0 : 1
               }}
             >
-              <img src={destination.image} alt={copy(destination.name, locale)} />
+              <Image src={destination.image} alt={copy(destination.name, locale)} fill sizes="(max-width: 760px) 82vw, 360px" />
               <div className="destination-card__body">
                 <span>{copy(destination.duration, locale)}</span>
                 <h3>{copy(destination.name, locale)}</h3>
@@ -251,7 +252,7 @@ function StorySection({ locale }: { locale: string }) {
       <div className="story-track" tabIndex={0} aria-label={t("sections.story")}>
         {storyPanels.map((panel, index) => (
           <article className="story-panel" key={copy(panel.title, locale)} data-cursor="image">
-            <img src={panel.image} alt={copy(panel.title, locale)} />
+            <Image src={panel.image} alt={copy(panel.title, locale)} fill sizes="(max-width: 760px) 88vw, 860px" />
             <div>
               <span>0{index + 1}</span>
               <h3>{copy(panel.title, locale)}</h3>
