@@ -1,9 +1,8 @@
 "use client";
 
 import Lenis from "@studio-freight/lenis";
-import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { I18nextProvider } from "react-i18next";
 import i18n from "@/i18n/config";
 import { ThemeProvider } from "@/lib/ThemeProvider";
@@ -14,6 +13,7 @@ import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
+  const pageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -22,6 +22,17 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       i18n.changeLanguage(savedLang);
     }
   }, []);
+
+  /* Scroll to top and replay fade-in on route change */
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    const el = pageRef.current;
+    if (!el) return;
+    el.classList.remove("page-transition-enter");
+    // Force reflow so the browser actually removes the class before re-adding it
+    void el.offsetWidth;
+    el.classList.add("page-transition-enter");
+  }, [pathname]);
 
   useEffect(() => {
     if (!mounted) return;
@@ -51,17 +62,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       <ThemeProvider>
         <Navbar />
         <main style={{ minHeight: "100vh" }}>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={pathname}
-              initial={{ opacity: 0, y: 22 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -18 }}
-              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            >
-              {children}
-            </motion.div>
-          </AnimatePresence>
+          <div ref={pageRef} className="page-transition-enter">
+            {children}
+          </div>
         </main>
         <Footer />
         {mounted && <WhatsAppButton />}
