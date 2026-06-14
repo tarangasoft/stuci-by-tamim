@@ -1,0 +1,113 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "tours": "Tours",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "book": "Book Now",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "brand": {
+    "name": "STUCI Travel & Tours",
+    "short": "STUCI",
+    "tagline": "Your Journey Begins Here"
+  },
+  "hero": {
+    "eyebrow": "Bangladesh, beautifully planned",
+    "headline": "STUCI Travel & Tours",
+    "typePrefix": "Discover",
+    "typeFallback": "Cox's Bazar, Sundarban, Rajshahi, International escapes",
+    "ctaExplore": "Explore Tours",
+    "ctaBook": "Book Now",
+    "scroll": "Bangladesh Awaits"
+  },
+  "sections": {
+    "stats": "By the Numbers",
+    "why": "Why Stuci",
+    "featured": "Your Next Adventure",
+    "story": "Bangladesh Awaits",
+    "testimonials": "Travelers Say",
+    "planner": "Tell Us Your Dream",
+    "map": "Where We Go",
+    "aboutHero": "About Stuci",
+    "origin": "Our Journey",
+    "values": "Mission & Values",
+    "services": "Services",
+    "team": "The Travel Desk",
+    "trust": "Trusted Partners",
+    "tourHero": "Choose Your Adventure",
+    "galleryHero": "Travel Gallery",
+    "newsletter": "Get exclusive deals and travel tips"
+  },
+  "planner": {
+    "destination": "Destination",
+    "duration": "Duration",
+    "budget": "Budget",
+    "group": "Group Size",
+    "days": "days",
+    "people": "people",
+    "submit": "Plan My Trip",
+    "loading": "Building route",
+    "resultTitle": "Suggested itinerary",
+    "resultBody": "Start with a scenic arrival, reserve the second day for the signature experience, and keep the final evening open for local food, photos, and flexible shopping time.",
+    "book": "Book This Itinerary"
+  },
+  "filters": {
+    "all": "All",
+    "oneDay": "One Day",
+    "domestic": "Domestic",
+    "international": "International",
+    "landscapes": "Landscapes",
+    "beaches": "Beaches",
+    "culture": "Culture",
+    "wildlife": "Wildlife",
+    "tourists": "Tourist Photos",
+    "video": "Video"
+  },
+  "tours": {
+    "from": "From",
+    "perPerson": "/ person",
+    "viewDetails": "View Details",
+    "bookTour": "Book This Tour",
+    "includes": "Includes",
+    "highlights": "Highlights",
+    "itinerary": "Itinerary",
+    "close": "Close tour details",
+    "builder": "Build Your Dream Trip",
+    "builderSub": "Choose destinations, set your pace, and send a ready-to-book summary to our travel desk."
+  },
+  "gallery": {
+    "open": "Open image",
+    "close": "Close gallery",
+    "previous": "Previous image",
+    "next": "Next image",
+    "submit": "Submit Your Photos"
+  },
+  "forms": {
+    "name": "Name",
+    "phone": "Phone",
+    "date": "Travel date",
+    "email": "Email address",
+    "subscribe": "Subscribe",
+    "subscribed": "Subscribed"
+  },
+  "footer": {
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "hours": "Hours",
+    "location": "Dhaka, Bangladesh",
+    "phone": "+880 1700 000000",
+    "email": "info@stucitravel.com",
+    "schedule": "Sat-Thu, 10:00-19:00",
+    "rights": "All rights reserved."
+  },
+  "actions": {
+    "viewTours": "View All Tours",
+    "custom": "Custom Package",
+    "whatsapp": "Book via WhatsApp",
+    "backTop": "Back to top",
+    "viewMap": "View on Map"
+  }
+}
