@@ -3,6 +3,7 @@
 import confetti from "canvas-confetti";
 import { ArrowUp, CheckCircle, Clock, Facebook, Instagram, Mail, MapPin, Phone, Send } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { FormEvent, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { navItems } from "@/data/travel";
@@ -25,7 +26,7 @@ export function Footer() {
         particleCount: 90,
         spread: 70,
         origin: { x, y },
-        colors: ["#0A9B8E", "#F0A500", "#FFD166", "#ff6b5e", "#ffffff"]
+        colors: ["#15b0f8", "#ff8731", "#ff9436", "#ff6b5e", "#ffffff"]
       });
     }
   };
@@ -84,7 +85,16 @@ export function Footer() {
       <div className="footer-grid section-inner">
         <div>
           <Link href="/" className="footer-brand">
-            STUCI
+            <span className="footer-logo-wrap">
+              <Image
+                src="/images/stuci_logo.png"
+                alt="STUCI Logo"
+                width={64}
+                height={64}
+                className="object-contain"
+              />
+            </span>
+            <span>STUCI</span>
           </Link>
           <p>{t("brand.tagline")}</p>
           <div className="social-row">

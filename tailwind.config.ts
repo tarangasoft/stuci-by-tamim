@@ -11,13 +11,20 @@ const config: Config = {
     extend: {
       colors: {
         primary: "var(--c-primary)",
+        "primary-light": "var(--c-primary-light)",
+        "primary-dark": "var(--c-primary-dark)",
         accent: "var(--c-accent)",
+        "accent-light": "var(--c-accent-light)",
+        "accent-bright": "var(--c-accent-bright)",
+        gold: "var(--c-gold)",
+        "gold-light": "var(--c-gold-light)",
         void: "var(--c-bg-void)",
         deep: "var(--c-bg-deep)",
         surface: "var(--c-bg-surface)",
         bright: "var(--c-text-bright)",
         muted: "var(--c-text-muted)",
-        coral: "var(--c-coral)"
+        coral: "var(--c-coral)",
+        ink: "var(--c-ink)"
       },
       fontFamily: {
         display: ["var(--font-display)"],

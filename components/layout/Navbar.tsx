@@ -1,8 +1,9 @@
 "use client";
 
 import clsx from "clsx";
-import { Menu, Moon, Plane, Sun, X } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -51,60 +52,70 @@ export function Navbar() {
   };
 
   return (
-    <header className={clsx("site-nav", scrolled && "site-nav--scrolled", hidden && "site-nav--hidden")}>
-      <Link href="/" className="brand-lockup magnetic" aria-label="STUCI Travel and Tours home">
-        <span className="brand-mark">
-          <Plane size={20} aria-hidden="true" />
-        </span>
-        <span>
-          <strong>STUCI</strong>
-          <small>Travel &amp; Tours</small>
-        </span>
-      </Link>
-
-      <nav className="desktop-nav" aria-label="Primary navigation">
-        {navItems.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            className={clsx("nav-link magnetic", isActive(item.href) && "nav-link--active")}
-          >
-            {t(item.key)}
-          </Link>
-        ))}
-      </nav>
-
-      <div className="nav-actions">
-        <LanguageToggle />
-
-        {/* Theme Toggle */}
-        <button
-          type="button"
-          className="theme-toggle magnetic"
-          onClick={toggleTheme}
-          aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-          title={theme === "dark" ? "Light mode" : "Dark mode"}
-        >
-          {theme === "dark" ? (
-            <Sun size={18} aria-hidden="true" />
-          ) : (
-            <Moon size={18} aria-hidden="true" />
-          )}
-        </button>
-
-        <Link href="/tours" className="book-pill magnetic">
-          {t("nav.book")}
+    <>
+      <header className={clsx("site-nav", scrolled && "site-nav--scrolled", hidden && "site-nav--hidden")}>
+        <Link href="/" className="brand-lockup magnetic" aria-label="STUCI Travel and Tours home">
+          <span className="brand-logo-wrap">
+            <Image
+              src="/images/stuci_logo.png"
+              alt="STUCI Logo"
+              width={80}
+              height={80}
+              sizes="(max-width: 900px) 70px, 80px"
+              className="brand-logo-img object-contain"
+              priority
+            />
+          </span>
+          <span>
+            <strong>STUCI</strong>
+            <small>Travel &amp; Tours</small>
+          </span>
         </Link>
-        <button
-          type="button"
-          className="menu-button magnetic"
-          onClick={() => setOpen((value) => !value)}
-          aria-expanded={open}
-          aria-label={open ? t("nav.closeMenu") : t("nav.openMenu")}
-        >
-          {open ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
-        </button>
-      </div>
+
+        <nav className="desktop-nav" aria-label="Primary navigation">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={clsx("nav-link magnetic", isActive(item.href) && "nav-link--active")}
+            >
+              {t(item.key)}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="nav-actions">
+          <LanguageToggle />
+
+          {/* Theme Toggle */}
+          <button
+            type="button"
+            className="theme-toggle magnetic"
+            onClick={toggleTheme}
+            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+            title={theme === "dark" ? "Light mode" : "Dark mode"}
+          >
+            {theme === "dark" ? (
+              <Sun size={18} aria-hidden="true" />
+            ) : (
+              <Moon size={18} aria-hidden="true" />
+            )}
+          </button>
+
+          <Link href="/tours" className="book-pill magnetic">
+            {t("nav.book")}
+          </Link>
+          <button
+            type="button"
+            className="menu-button magnetic"
+            onClick={() => setOpen((value) => !value)}
+            aria-expanded={open}
+            aria-label={open ? t("nav.closeMenu") : t("nav.openMenu")}
+          >
+            {open ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
+          </button>
+        </div>
+      </header>
 
       <div className={clsx("mobile-menu", open && "mobile-menu--open")} role="dialog" aria-modal="true">
         <button
@@ -132,6 +143,6 @@ export function Navbar() {
           </button>
         </div>
       </div>
-    </header>
+    </>
   );
 }
