@@ -58,14 +58,20 @@ export function HomePage() {
   return (
     <div className="home-page">
       <section className="home-hero">
-        <Image className="hero-image" src={imageBank.hero} alt="Golden beach waves at sunset" fill priority sizes="100vw" />
+        <Image className="hero-image" src={imageBank.hero} alt="Misty hills and green forest" fill priority sizes="100vw" />
         <div className="hero-overlay" />
         <ParticleField density={90} />
         <div className="noise" />
 
         <div className="hero-content reveal">
           <div className="compass-rose" aria-hidden="true">
-            <Compass size={42} />
+            <Image
+              src="/images/stuci_logo.png"
+              alt="STUCI Logo"
+              width={120}
+              height={120}
+              className="object-contain"
+            />
           </div>
           <p className="hero-eyebrow">{t("hero.eyebrow")}</p>
           <h1>{t("hero.headline")}</h1>

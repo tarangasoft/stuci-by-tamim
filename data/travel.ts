@@ -50,12 +50,12 @@ export const heroDestinations = {
 };
 
 export const imageBank = {
-  // Hero — dramatic tropical ocean with golden sunset
+  // Hero — beautiful hill + forest image
   hero:
-    "https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=2400&q=90",
-  // Cox's Bazar — actual long sandy beach Bangladesh
+    "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=2400&q=90",
+  // Cox's Bazar — actual long sandy beach Bangladesh (moon boat)
   cox:
-    "https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?auto=format&fit=crop&w=1400&q=85",
+    "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?auto=format&fit=crop&w=1400&q=85",
   // Sundarban — lush mangrove forest waterway
   sundarban:
     "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1400&q=85",

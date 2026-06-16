@@ -1,5 +1,5 @@
 "use client";
-
+import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Download, ImagePlus, Play, Send, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
@@ -96,12 +96,11 @@ export function GalleryPage() {
             ))}
           </div>
 
-          <motion.div layout className="gallery-masonry">
+          <div className="gallery-masonry">
             <AnimatePresence mode="popLayout">
               {visible.map((item, index) => (
                 <motion.button
                   type="button"
-                  layout
                   initial={{ opacity: 0, y: 18 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.92 }}
@@ -124,7 +123,7 @@ export function GalleryPage() {
                 </motion.button>
               ))}
             </AnimatePresence>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -155,40 +154,84 @@ export function GalleryPage() {
 
       <AnimatePresence>
         {active && activeIndex !== null && (
-          <motion.div className="lightbox" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-            <button type="button" className="lightbox-close" onClick={() => setActiveIndex(null)} aria-label={t("gallery.close")}>
-              <X size={24} aria-hidden="true" />
-            </button>
-            <button type="button" className="lightbox-arrow lightbox-arrow--left" onClick={() => move(-1)} aria-label={t("gallery.previous")}>
-              <ArrowLeft size={24} aria-hidden="true" />
-            </button>
-            <motion.figure
-              key={active.id}
-              initial={{ opacity: 0, scale: 0.94, y: 22 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.98 }}
-              transition={{ duration: 0.22 }}
-            >
-              <img src={active.image} alt={copy(active.title, locale)} />
-              {active.category === "video" && (
-                <span className="lightbox-play">
-                  <Play size={26} aria-hidden="true" />
-                </span>
-              )}
-              <figcaption>
-                <strong>{copy(active.title, locale)}</strong>
-                <span>{active.credit}</span>
-              </figcaption>
-            </motion.figure>
-            <button type="button" className="lightbox-arrow lightbox-arrow--right" onClick={() => move(1)} aria-label={t("gallery.next")}>
-              <ArrowRight size={24} aria-hidden="true" />
-            </button>
-            <a className="lightbox-download" href={active.image} target="_blank" rel="noreferrer" aria-label="Open image source">
-              <Download size={22} aria-hidden="true" />
-            </a>
-          </motion.div>
+          <GalleryLightbox
+            active={active}
+            locale={locale}
+            onClose={() => setActiveIndex(null)}
+            move={move}
+            t={t}
+          />
         )}
       </AnimatePresence>
     </div>
+  );
+}
+
+function GalleryLightbox({
+  active,
+  locale,
+  onClose,
+  move,
+  t
+}: {
+  active: (typeof galleryItems)[number];
+  locale: string;
+  onClose: () => void;
+  move: (direction: number) => void;
+  t: any;
+}) {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
+
+  const handleBackdropClick = (event: React.MouseEvent) => {
+    if (event.target === event.currentTarget) {
+      onClose();
+    }
+  };
+
+  return createPortal(
+    <motion.div
+      className="lightbox"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={handleBackdropClick}
+    >
+      <button type="button" className="lightbox-close" onClick={onClose} aria-label={t("gallery.close")}>
+        <X size={24} aria-hidden="true" />
+      </button>
+      <button type="button" className="lightbox-arrow lightbox-arrow--left" onClick={() => move(-1)} aria-label={t("gallery.previous")}>
+        <ArrowLeft size={24} aria-hidden="true" />
+      </button>
+      <motion.figure
+        key={active.id}
+        initial={{ opacity: 0, scale: 0.94, y: 22 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.98 }}
+        transition={{ duration: 0.22 }}
+      >
+        <img src={active.image} alt={copy(active.title, locale)} />
+        {active.category === "video" && (
+          <span className="lightbox-play">
+            <Play size={26} aria-hidden="true" />
+          </span>
+        )}
+        <figcaption>
+          <strong>{copy(active.title, locale)}</strong>
+          <span>{active.credit}</span>
+        </figcaption>
+      </motion.figure>
+      <button type="button" className="lightbox-arrow lightbox-arrow--right" onClick={() => move(1)} aria-label={t("gallery.next")}>
+        <ArrowRight size={24} aria-hidden="true" />
+      </button>
+      <a className="lightbox-download" href={active.image} target="_blank" rel="noreferrer" aria-label="Open image source">
+        <Download size={22} aria-hidden="true" />
+      </a>
+    </motion.div>,
+    document.body
   );
 }

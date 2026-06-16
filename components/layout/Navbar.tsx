@@ -105,26 +105,29 @@ export function Navbar() {
           <Link href="/tours" className="book-pill magnetic">
             {t("nav.book")}
           </Link>
+          {/* Always shows hamburger icon — close button is inside the overlay itself */}
           <button
             type="button"
             className="menu-button magnetic"
-            onClick={() => setOpen((value) => !value)}
+            onClick={() => setOpen(true)}
             aria-expanded={open}
-            aria-label={open ? t("nav.closeMenu") : t("nav.openMenu")}
+            aria-label={t("nav.openMenu")}
+            style={{ display: open ? "none" : undefined }}
           >
-            {open ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
+            <Menu size={22} aria-hidden="true" />
           </button>
         </div>
       </header>
 
       <div className={clsx("mobile-menu", open && "mobile-menu--open")} role="dialog" aria-modal="true">
+        {/* Single dedicated close button inside overlay */}
         <button
           type="button"
           className="mobile-menu__close"
           onClick={() => setOpen(false)}
           aria-label={t("nav.closeMenu")}
         >
-          <X size={26} />
+          <X size={22} aria-hidden="true" />
         </button>
         {navItems.map((item, index) => (
           <Link key={item.href} href={item.href} style={{ transitionDelay: `${index * 55}ms` }}>

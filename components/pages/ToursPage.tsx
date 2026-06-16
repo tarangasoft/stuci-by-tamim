@@ -17,6 +17,7 @@ import {
   X
 } from "lucide-react";
 import { MouseEvent, useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
 import { copy, destinations, imageBank, TourCategory, tours } from "@/data/travel";
 import { ParticleField } from "@/components/ui/ParticleField";
@@ -88,13 +89,13 @@ export function ToursPage() {
             <span>{visibleTours.length} {t(filterOptions.find((item) => item.value === filter)?.key ?? "filters.all")}</span>
           </div>
 
-          <motion.div layout className="tour-card-grid">
+          <div className="tour-card-grid">
             <AnimatePresence mode="popLayout">
               {visibleTours.map((tour) => (
                 <TourCard key={tour.id} tour={tour} locale={locale} onOpen={() => setSelected(tour)} />
               ))}
             </AnimatePresence>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -120,9 +121,14 @@ function TourCard({
   const [tilt, setTilt] = useState({ x: 0, y: 0, shineX: 50, shineY: 50 });
 
   const onMouseMove = (event: MouseEvent<HTMLElement>) => {
+    if (typeof window !== "undefined" && window.matchMedia("(hover: none)").matches) {
+      return; // Disable hover tilt on touch screens (mobile)
+    }
     const rect = event.currentTarget.getBoundingClientRect();
+    if (event.clientX === undefined || event.clientY === undefined) return;
     const px = (event.clientX - rect.left) / rect.width;
     const py = (event.clientY - rect.top) / rect.height;
+    if (isNaN(px) || isNaN(py)) return;
     setTilt({
       x: (0.5 - py) * 14,
       y: (px - 0.5) * 14,
@@ -133,12 +139,12 @@ function TourCard({
 
   return (
     <motion.article
-      layout
       initial={{ opacity: 0, scale: 0.92 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.84 }}
       transition={{ type: "spring", stiffness: 240, damping: 24 }}
-      className="tour-card magnetic"
+      className="tour-card magnetic cursor-pointer"
+      onClick={onOpen}
       onMouseMove={onMouseMove}
       onMouseLeave={() => setTilt({ x: 0, y: 0, shineX: 50, shineY: 50 })}
       style={{
@@ -175,7 +181,7 @@ function TourCard({
             </li>
           ))}
         </ul>
-        <button type="button" className="ghost-button" onClick={onOpen}>
+        <button type="button" className="ghost-button" onClick={(event) => { event.stopPropagation(); onOpen(); }}>
           {t("tours.viewDetails")}
           <ChevronDown size={16} aria-hidden="true" />
         </button>
@@ -208,20 +214,32 @@ function TourDetail({
     };
   }, [onClose]);
 
-  return (
-    <motion.div className="tour-modal-backdrop" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+  const handleBackdropClick = (event: React.MouseEvent) => {
+    if (event.target === event.currentTarget) {
+      onClose();
+    }
+  };
+
+  return createPortal(
+    <motion.div
+      className="tour-modal-backdrop"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={handleBackdropClick}
+    >
       <motion.article
         className="tour-modal glass-card"
         role="dialog"
         aria-modal="true"
         aria-labelledby="tour-modal-title"
-        initial={{ y: 80, opacity: 0, scale: 0.96 }}
-        animate={{ y: 0, opacity: 1, scale: 1 }}
-        exit={{ y: 70, opacity: 0, scale: 0.96 }}
-        transition={{ type: "spring", stiffness: 220, damping: 24 }}
+        initial={{ y: 60, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: 60, opacity: 0 }}
+        transition={{ type: "spring", stiffness: 240, damping: 26 }}
       >
         <button type="button" className="modal-close" onClick={onClose} aria-label={t("tours.close")}>
-          <X size={22} aria-hidden="true" />
+          <X size={20} aria-hidden="true" />
         </button>
         <div className="tour-modal__media">
           <img src={tour.image} alt={copy(tour.title, locale)} />
@@ -229,7 +247,7 @@ function TourDetail({
         <div className="tour-modal__content">
           <span className="modal-badge">{copy(tour.badge, locale)}</span>
           <h2 id="tour-modal-title">{copy(tour.title, locale)}</h2>
-          <p>{copy(tour.subtitle, locale)}</p>
+          <p className="modal-subtitle">{copy(tour.subtitle, locale)}</p>
 
           <div className="modal-facts">
             <span>
@@ -281,9 +299,11 @@ function TourDetail({
           </section>
 
           <form className="booking-form">
-            <input aria-label={t("forms.name")} placeholder={t("forms.name")} />
-            <input aria-label={t("forms.phone")} placeholder={t("forms.phone")} />
-            <input aria-label={t("forms.date")} type="date" />
+            <div className="booking-form__fields">
+              <input aria-label={t("forms.name")} placeholder={t("forms.name")} />
+              <input aria-label={t("forms.phone")} placeholder={t("forms.phone")} />
+              <input aria-label={t("forms.date")} type="date" />
+            </div>
             <a
               className="cinematic-button"
               target="_blank"
@@ -296,7 +316,8 @@ function TourDetail({
           </form>
         </div>
       </motion.article>
-    </motion.div>
+    </motion.div>,
+    document.body
   );
 }
 
